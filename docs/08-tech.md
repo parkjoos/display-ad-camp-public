@@ -45,6 +45,7 @@ display-ad-camp-game/
 ├── api/index.js                # Vercel 함수 진입점 — 모든 경로를 받아 createApp 의 요청 처리기로 (11-5)
 ├── vercel.json                 # Vercel 설정 — 모든 경로를 함수로 · 함수에 넣을 파일 · 리전 · 실행 시간 · 빌드 때 npm test (11-5)
 ├── .vercelignore               # Vercel 에 올리지 않는 것 (로컬 설정 · 현장 상태 · 백업 · 서명 키)
+├── .github/workflows/sync-public.yml  # 공개용 저장소 동기화 — main 푸시마다 display-ad-camp-public 에 새 커밋 하나 (R-106, 16-deploy 9장)
 ├── public/robots.txt           # Vercel 이 그대로 내주는 유일한 파일 (11-5)
 ├── server/
 │   ├── app.mjs                 # 서버 조립 — createApp(저장소 준비 · 요청 분기 · 오류 응답) · createAppServer(포트 열기 — server.mjs · 테스트)

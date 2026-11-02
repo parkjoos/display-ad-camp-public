@@ -202,3 +202,24 @@ Blob 공개 주소는 주소만 알면 누구나 열린다. Blob 자체에는 Or
 - **Blob 방화벽(2-4)**: `/play` 화면의 사진 요청도 Referer `https://display-ad-camp.fun/` 라 그대로 통과한다. vercel.app 주소로 연 `/play` 는 사진이 막히니 `https://display-ad-camp.fun/play` 로만 알린다.
 - **한도**: 사진은 Blob 에서 바로 받는다 — 전송 10GB / 월 (11-7). 사진 퀴즈 카테고리를 모두 풀면 쓰는 이미지 대부분(약 94MB 이하 — 줄여 올린 뒤면 더 적음)을 받으므로 대략 **월 100명 남짓 모두 풀면 한도**에 닿는다 (카테고리 몇 개만 풀면 그만큼 적다 — R-98). 넘으면 30일 동안 사진이 모두 안 뜬다 — 많이 알릴 때는 Vercel Usage → Blob 전송을 본다. Upstash 는 방문 한 번에 명령 약 6개뿐이다.
 - 끄려면 [공개 모드 끄기] — 바로 "지금은 공개하지 않습니다". 이미 받아 둔 브라우저 캐시 사진은 남는다.
+
+## 9. 공개용 저장소 동기화 (R-106)
+
+개발은 이 저장소(`parkjoos/display-ad-camp`)에서 하고, 공개용 사본은 `parkjoos/display-ad-camp-public` 에 둔다. 공개 저장소는 이 저장소의 이력을 갖지 않고 자기 커밋만 쌓는다 (11/02 첫 공개 — 커밋 하나).
+
+| 항목 | 내용 |
+| --- | --- |
+| 동작 | `.github/workflows/sync-public.yml` — 이 저장소 `main` 에 푸시하면(또는 Actions 에서 수동 실행) 공개 저장소를 받아 파일을 통째로 바꿔 넣고(`.github` 제외, 이 저장소에서 지운 파일은 지움) 바뀐 게 있으면 새 커밋 하나로 푸시. 푸시가 겹치면 차례로 |
+| 커밋 | 작성자 `github-actions[bot]`, 메시지는 맨 위 커밋 제목 — 한 번에 여러 커밋을 푸시했으면 제목 목록. 이 저장소의 해시 · 작성자 이메일은 넘기지 않는다 |
+| 열쇠 | 공개 저장소의 배포 키(Deploy key, 쓰기 허용) — 개인 키는 이 저장소의 비밀 값 `PUBLIC_REPO_DEPLOY_KEY`. 없으면 경고만 남기고 건너뛴다 (실패로 남지 않음) |
+| 주의 | **`main` 에 올린 것은 곧 공개된다** — 비밀 값 · 실제 사진 · 사내 정보 · 사람 이름 · 말씀 인용 · 고정 PIN 을 커밋하지 않는다 (R-100 · R-104 · R-105). 공개 저장소에 직접 올린 파일(README · LICENSE 등)은 다음 동기화 때 지워지므로 이 저장소에 둔다 |
+
+### 9-1. 처음 한 번 — 배포 키 등록 (운영자)
+
+열쇠는 운영자가 직접 만들어 넣는다 (개인 키를 다른 곳에 남기지 않게 마지막에 지운다).
+
+1. ☐ 키 만들기 — `ssh-keygen -t ed25519 -N "" -C "display-ad-camp public sync" -f ~/camp-public-deploy`
+2. ☐ 공개 저장소에 배포 키(쓰기 허용)로 — `gh repo deploy-key add ~/camp-public-deploy.pub --repo parkjoos/display-ad-camp-public --title "sync from display-ad-camp" --allow-write` (또는 공개 저장소 Settings → Deploy keys → Add, "Allow write access")
+3. ☐ 이 저장소 비밀 값으로 — `gh secret set PUBLIC_REPO_DEPLOY_KEY --repo parkjoos/display-ad-camp < ~/camp-public-deploy` (또는 Settings → Secrets and variables → Actions)
+4. ☐ 키 파일 지우기 — `rm ~/camp-public-deploy ~/camp-public-deploy.pub`
+5. ☐ 확인 — `gh workflow run sync-public.yml --repo parkjoos/display-ad-camp` (또는 Actions → 공개 저장소 동기화 → Run workflow) → 성공. 공개할 변화가 있었으면 공개 저장소에 `github-actions[bot]` 커밋

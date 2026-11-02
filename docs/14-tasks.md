@@ -319,6 +319,7 @@
 | DEP-31 | 로그 시각을 Node 판과 상관없이 (R-101) | `server/files.mjs` `clock` — `toLocaleTimeString('ko-KR')` 대신 `stamp` 와 같은 한국 시간 부분(`formatToParts`, `h23`)으로 `<시>시 <분>분 <초>초` 조립. `test/time.test.js` 자정 · 한 자리 분 · 초 | [08-tech.md](08-tech.md) 11-5 | X-53 | DEP-19 | 완료 (11/02 — 15-qa 71장) |
 | DEP-32 | 공개 뒤 민감정보 정리 (R-104) | 문서의 보안 프로그램 이름 · 사내망 정책 · 사람 별칭 · 사내 계정 ID 를 역할 이름으로, `test/beacon.test.js` 의 실제 IP 를 `203.0.113.7` 로. 이력은 그대로 | — | X-53 | DEP-30 | 완료 (11/02 — 15-qa 73장) |
 | DEP-33 | 고정 PIN 없애기 (R-105) | 테스트 8개 파일의 `const PIN` 을 무작위 6자리로, 틀린 PIN · 다른 PIN 을 `wrongPin(n)` 으로 (`server` · `server-mode` · `redis` 테스트). `docs/12-host-view.md` 터미널 예시 PIN 가림. 복제본에서 `git filter-repo --replace-text` (같은 규칙) → 맨 끝 커밋 트리 대조 → 강제 푸시 | — | V-5, I-29, X-6, X-11 | DEP-32 | 완료 (11/02 — 15-qa 74장) |
+| DEP-34 | 공개용 저장소 · 동기화 (R-106) | `display-ad-camp-public` 에 이 저장소 `main` 파일로 첫 커밋 하나 푸시. `.github/workflows/sync-public.yml` — `main` 푸시 · 수동 실행, 두 저장소 받기(공개 저장소는 배포 키 SSH), `rsync --delete`(`.git` · `.github` 제외), 변화 없으면 건너뜀, `github-actions[bot]` 커밋 · 제목(목록) 메시지, 차례로(`concurrency`). 배포 키 비밀 값이 없으면 경고만 | [16-deploy.md](16-deploy.md) 9장 | — | DEP-33 | 완료 — 배포 키 등록(운영자) 뒤 첫 실행 확인 대기 |
 
 ## 3. 데이터 (구현과 함께)
 
