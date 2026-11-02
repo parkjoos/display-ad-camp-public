@@ -1,0 +1,560 @@
+{
+  "schemaVersion": 1,
+  "id": "photo-quiz",
+  "type": "photo",
+  "title": "사진 보고 맞추기",
+  "icon": "📸",
+  "description": "사진을 보고 무엇인지 가장 먼저 맞혀 보세요!",
+  "order": 3,
+  "rules": ["라운드마다 팀당 대표 2명", "맞힌 사람은 빠지고, 대표가 다 맞힌 순서로 1 · 2 · 3등", "확대 사진은 점점 작아지고, 가린 상자는 하나씩 열려요"],
+  "categories": [
+    {
+      "id": "character",
+      "name": "캐릭터 이름",
+      "icon": "🧸",
+      "description": "캐릭터를 보고 이름을 맞혀요 (만화,유명 캐릭터, 포켓몬)",
+      "prompt": "이 캐릭터의 이름은?",
+      "questions": [
+        {
+          "id": "character-4xpm",
+          "answer": "캐릭터 이름 1",
+          "image": "assets/photo-quiz/character/character-4xpm.png",
+          "note": "검수용 샘플 (DATA-4) — 캐릭터 이름 1번 (none)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "character-dxud",
+          "answer": "캐릭터 이름 2",
+          "image": "assets/photo-quiz/character/character-dxud.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "hint": "캐릭터 이름 힌트",
+          "note": "검수용 샘플 (DATA-4) — 캐릭터 이름 2번 (zoom)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "character-tk5c",
+          "answer": "캐릭터 이름 3",
+          "image": "assets/photo-quiz/character/character-tk5c.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 캐릭터 이름 3번 (mask)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "character-u75s",
+          "answer": "캐릭터 이름 4",
+          "image": "assets/photo-quiz/character/character-u75s.png",
+          "note": "검수용 샘플 (DATA-4) — 캐릭터 이름 4번 (none)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "food-zoom",
+      "name": "확대 음식",
+      "icon": "🔍",
+      "description": "크게 확대한 음식 사진 — 점점 작아져요",
+      "prompt": "이 음식은 무엇일까요?",
+      "defaultEffect": "zoom",
+      "questions": [
+        {
+          "id": "food-zoom-k7q2",
+          "answer": "샘플 국수",
+          "image": "assets/photo-quiz/food-zoom/food-zoom-k7q2.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [32, 41],
+          "hint": "면발 · 고명",
+          "note": "샘플 문제 — 리허설 전에 실제 문제로 바꾸세요",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "food-zoom-rkgz",
+          "answer": "확대 음식 2",
+          "image": "assets/photo-quiz/food-zoom/food-zoom-rkgz.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "hint": "확대 음식 힌트",
+          "note": "검수용 샘플 (DATA-4) — 확대 음식 2번 (zoom)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "food-zoom-46g6",
+          "answer": "확대 음식 3",
+          "image": "assets/photo-quiz/food-zoom/food-zoom-46g6.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 확대 음식 3번 (mask)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "food-zoom-bpc6",
+          "answer": "확대 음식 4",
+          "image": "assets/photo-quiz/food-zoom/food-zoom-bpc6.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "note": "검수용 샘플 (DATA-4) — 확대 음식 4번 (zoom)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "title",
+      "name": "영화 · 드라마 제목",
+      "icon": "🎬",
+      "description": "포스터의 가려진 제목을 맞혀요",
+      "prompt": "이 작품의 제목은?",
+      "defaultEffect": "mask",
+      "questions": [
+        {
+          "id": "title-8rjn",
+          "answer": "샘플 포스터",
+          "image": "assets/photo-quiz/title/title-8rjn.png",
+          "effect": "mask",
+          "masks": [[10, 78, 80, 10], [15, 6, 70, 12]],
+          "note": "샘플 문제 — 1번 상자 = 배우 이름, 2번 상자 = 제목",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "title-f9b6",
+          "answer": "영화 · 드라마 제목 2",
+          "image": "assets/photo-quiz/title/title-f9b6.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "hint": "영화 · 드라마 제목 힌트",
+          "note": "검수용 샘플 (DATA-4) — 영화 · 드라마 제목 2번 (zoom)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "title-t7m3",
+          "answer": "영화 · 드라마 제목 3",
+          "image": "assets/photo-quiz/title/title-t7m3.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 영화 · 드라마 제목 3번 (mask)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "title-gjhw",
+          "answer": "영화 · 드라마 제목 4",
+          "image": "assets/photo-quiz/title/title-gjhw.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 영화 · 드라마 제목 4번 (mask)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "famous-line",
+      "name": "명장면 명대사",
+      "icon": "💬",
+      "description": "명장면을 보고 그 장면의 명대사를 말해요",
+      "prompt": "이 장면의 명대사는?",
+      "questions": [
+        {
+          "id": "famous-line-nbdt",
+          "answer": "검수용 긴 정답입니다 두 줄 안에 자동으로 줄어들어 들어가는지 확인하는",
+          "image": "assets/photo-quiz/famous-line/famous-line-nbdt.png",
+          "note": "검수용 샘플 (DATA-4) — 명장면 명대사 1번 (none)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "famous-line-wgxu",
+          "answer": "명장면 명대사 2",
+          "image": "assets/photo-quiz/famous-line/famous-line-wgxu.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "hint": "명장면 명대사 힌트",
+          "note": "검수용 샘플 (DATA-4) — 명장면 명대사 2번 (zoom)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "famous-line-m7p6",
+          "answer": "명장면 명대사 3",
+          "image": "assets/photo-quiz/famous-line/famous-line-m7p6.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 명장면 명대사 3번 (mask)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "famous-line-2ses",
+          "answer": "명장면 명대사 4",
+          "image": "assets/photo-quiz/famous-line/famous-line-2ses.png",
+          "note": "검수용 샘플 (DATA-4) — 명장면 명대사 4번 (none)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "snack",
+      "name": "과자 이름",
+      "icon": "🍪",
+      "description": "과자 봉지 일부를 보고 이름을 맞혀요",
+      "prompt": "이 과자의 이름은?",
+      "defaultEffect": "zoom",
+      "questions": [
+        {
+          "id": "snack-hdg6",
+          "answer": "과자 이름 1",
+          "image": "assets/photo-quiz/snack/snack-hdg6.png",
+          "note": "검수용 샘플 (DATA-4) — 과자 이름 1번 (none)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "snack-3vqm",
+          "answer": "과자 이름 2",
+          "image": "assets/photo-quiz/snack/snack-3vqm.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "hint": "과자 이름 힌트",
+          "note": "검수용 샘플 (DATA-4) — 과자 이름 2번 (zoom)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "snack-qukv",
+          "answer": "과자 이름 3",
+          "image": "assets/photo-quiz/snack/snack-qukv.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 과자 이름 3번 (mask)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "snack-p5v7",
+          "answer": "과자 이름 4",
+          "image": "assets/photo-quiz/snack/snack-p5v7.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "note": "검수용 샘플 (DATA-4) — 과자 이름 4번 (zoom)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "person",
+      "name": "인물 퀴즈",
+      "icon": "🧑",
+      "description": "사진 속 인물은 누구일까요?",
+      "prompt": "이 사람은 누구일까요?",
+      "questions": [
+        {
+          "id": "person-vsbt",
+          "answer": "인물 퀴즈 1",
+          "image": "assets/photo-quiz/person/person-vsbt.png",
+          "note": "검수용 샘플 (DATA-4) — 인물 퀴즈 1번 (none)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "person-veey",
+          "answer": "인물 퀴즈 2",
+          "image": "assets/photo-quiz/person/person-veey.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "hint": "인물 퀴즈 힌트",
+          "note": "검수용 샘플 (DATA-4) — 인물 퀴즈 2번 (zoom)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "person-jqhq",
+          "answer": "인물 퀴즈 3",
+          "image": "assets/photo-quiz/person/person-jqhq.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 인물 퀴즈 3번 (mask)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "person-t4ak",
+          "answer": "인물 퀴즈 4",
+          "image": "assets/photo-quiz/person/person-t4ak.png",
+          "note": "검수용 샘플 (DATA-4) — 인물 퀴즈 4번 (none)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "brand",
+      "name": "브랜드 맞추기",
+      "icon": "🏷️",
+      "description": "가려진 로고 · 상표의 브랜드를 맞혀요",
+      "prompt": "이 브랜드는?",
+      "defaultEffect": "mask",
+      "questions": [
+        {
+          "id": "brand-xjdn",
+          "answer": "브랜드 맞추기 1",
+          "image": "assets/photo-quiz/brand/brand-xjdn.png",
+          "note": "검수용 샘플 (DATA-4) — 브랜드 맞추기 1번 (none)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "brand-bba4",
+          "answer": "브랜드 맞추기 2",
+          "image": "assets/photo-quiz/brand/brand-bba4.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "hint": "브랜드 맞추기 힌트",
+          "note": "검수용 샘플 (DATA-4) — 브랜드 맞추기 2번 (zoom)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "brand-nb9r",
+          "answer": "브랜드 맞추기 3",
+          "image": "assets/photo-quiz/brand/brand-nb9r.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 브랜드 맞추기 3번 (mask)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "brand-6yr2",
+          "answer": "브랜드 맞추기 4",
+          "image": "assets/photo-quiz/brand/brand-6yr2.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 브랜드 맞추기 4번 (mask)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "meme",
+      "name": "짤 출처 찾기",
+      "icon": "🖼️",
+      "description": "유명한 짤이 나온 작품(프로그램)은?",
+      "prompt": "이 짤의 출처는?",
+      "questions": [
+        {
+          "id": "meme-6stk",
+          "answer": "짤 출처 찾기 1",
+          "image": "assets/photo-quiz/meme/meme-6stk.png",
+          "note": "검수용 샘플 (DATA-4) — 짤 출처 찾기 1번 (none)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "meme-pum2",
+          "answer": "짤 출처 찾기 2",
+          "image": "assets/photo-quiz/meme/meme-pum2.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "hint": "짤 출처 찾기 힌트",
+          "note": "검수용 샘플 (DATA-4) — 짤 출처 찾기 2번 (zoom)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "meme-wz9g",
+          "answer": "짤 출처 찾기 3",
+          "image": "assets/photo-quiz/meme/meme-wz9g.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "prompt": "이 장면이 나온 프로그램은?",
+          "note": "검수용 샘플 (DATA-4) — 짤 출처 찾기 3번 (mask)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "meme-qsqf",
+          "answer": "짤 출처 찾기 4",
+          "image": "assets/photo-quiz/meme/meme-qsqf.png",
+          "note": "검수용 샘플 (DATA-4) — 짤 출처 찾기 4번 (none)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "mv-scene",
+      "name": "뮤직비디오 장면",
+      "icon": "🎵",
+      "description": "뮤직비디오 장면을 보고 노래 제목을 맞혀요",
+      "prompt": "이 뮤직비디오의 노래 제목은?",
+      "questions": [
+        {
+          "id": "mv-scene-cnem",
+          "answer": "뮤직비디오 장면 1",
+          "image": "assets/photo-quiz/mv-scene/mv-scene-cnem.png",
+          "note": "검수용 샘플 (DATA-4) — 뮤직비디오 장면 1번 (none)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "mv-scene-ys3w",
+          "answer": "뮤직비디오 장면 2",
+          "image": "assets/photo-quiz/mv-scene/mv-scene-ys3w.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "hint": "뮤직비디오 장면 힌트",
+          "note": "검수용 샘플 (DATA-4) — 뮤직비디오 장면 2번 (zoom)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "mv-scene-geaw",
+          "answer": "뮤직비디오 장면 3",
+          "image": "assets/photo-quiz/mv-scene/mv-scene-geaw.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 뮤직비디오 장면 3번 (mask)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "mv-scene-4jcz",
+          "answer": "뮤직비디오 장면 4",
+          "image": "assets/photo-quiz/mv-scene/mv-scene-4jcz.png",
+          "note": "검수용 샘플 (DATA-4) — 뮤직비디오 장면 4번 (none)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "cartoon",
+      "name": "만화 제목",
+      "icon": "📚",
+      "description": "만화 장면을 보고 작품 제목을 맞혀요",
+      "prompt": "이 만화의 제목은?",
+      "questions": [
+        {
+          "id": "cartoon-dpdg",
+          "answer": "만화 제목 1",
+          "image": "assets/photo-quiz/cartoon/cartoon-dpdg.png",
+          "note": "검수용 샘플 (DATA-4) — 만화 제목 1번 (none)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "cartoon-9trs",
+          "answer": "만화 제목 2",
+          "image": "assets/photo-quiz/cartoon/cartoon-9trs.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "hint": "만화 제목 힌트",
+          "note": "검수용 샘플 (DATA-4) — 만화 제목 2번 (zoom)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "cartoon-ph48",
+          "answer": "만화 제목 3",
+          "image": "assets/photo-quiz/cartoon/cartoon-ph48.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 만화 제목 3번 (mask)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "cartoon-6evh",
+          "answer": "만화 제목 4",
+          "image": "assets/photo-quiz/cartoon/cartoon-6evh.png",
+          "note": "검수용 샘플 (DATA-4) — 만화 제목 4번 (none)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "drawing",
+      "name": "그림 퀴즈",
+      "icon": "🖍️",
+      "description": "준비위원회가 직접 그린 그림 — 무엇일까요?",
+      "prompt": "이 그림은 무엇일까요?",
+      "questions": [
+        {
+          "id": "drawing-rvxn",
+          "answer": "그림 퀴즈 1",
+          "image": "assets/photo-quiz/drawing/drawing-rvxn.png",
+          "note": "검수용 샘플 (DATA-4) — 그림 퀴즈 1번 (none)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "drawing-2fdd",
+          "answer": "그림 퀴즈 2",
+          "image": "assets/photo-quiz/drawing/drawing-2fdd.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "hint": "그림 퀴즈 힌트",
+          "note": "검수용 샘플 (DATA-4) — 그림 퀴즈 2번 (zoom)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "drawing-tx55",
+          "answer": "그림 퀴즈 3",
+          "image": "assets/photo-quiz/drawing/drawing-tx55.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 그림 퀴즈 3번 (mask)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "drawing-h5xy",
+          "answer": "그림 퀴즈 4",
+          "image": "assets/photo-quiz/drawing/drawing-h5xy.png",
+          "note": "검수용 샘플 (DATA-4) — 그림 퀴즈 4번 (none)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "drawing-d32p",
+          "answer": "이미지 없음 (E-19)",
+          "image": "assets/photo-quiz/drawing/drawing-d32p.png",
+          "note": "검수용 샘플 (DATA-4) — 이미지 파일 없음 (E-19)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "landmark",
+      "name": "랜드마크",
+      "icon": "🗼",
+      "description": "건물 · 명소 일부를 보고 장소를 맞혀요",
+      "prompt": "이곳은 어디일까요?",
+      "defaultEffect": "zoom",
+      "questions": [
+        {
+          "id": "landmark-972b",
+          "answer": "랜드마크 1",
+          "image": "assets/photo-quiz/landmark/landmark-972b.png",
+          "note": "검수용 샘플 (DATA-4) — 랜드마크 1번 (none)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "landmark-tc7g",
+          "answer": "랜드마크 2",
+          "image": "assets/photo-quiz/landmark/landmark-tc7g.png",
+          "effect": "zoom",
+          "zoom": 6,
+          "focus": [62, 58],
+          "hint": "랜드마크 힌트",
+          "note": "검수용 샘플 (DATA-4) — 랜드마크 2번 (zoom)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "landmark-ar7u",
+          "answer": "랜드마크 3",
+          "image": "assets/photo-quiz/landmark/landmark-ar7u.png",
+          "effect": "mask",
+          "masks": [[12, 7, 76, 13], [10, 78, 80, 10]],
+          "note": "검수용 샘플 (DATA-4) — 랜드마크 3번 (mask)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "landmark-xup9",
+          "answer": "확대 모서리 (E-7)",
+          "image": "assets/photo-quiz/landmark/landmark-xup9.png",
+          "effect": "zoom",
+          "zoom": 5,
+          "focus": [0, 0],
+          "note": "검수용 샘플 (DATA-4) — 랜드마크 4번 (zoom)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    }
+  ]
+}

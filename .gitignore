@@ -1,0 +1,12 @@
+.DS_Store
+data/.backup/
+# 현장 상태 — 원본은 서버 저장 폴더, git 에 올리지 않는다 (R-37, docs/08-tech.md 5장)
+state/
+*.tmp
+node_modules/
+# 로컬 실행 설정 — 테스트용 PIN 이 들어 있어 올리지 않는다
+.claude/
+.idea
+candidates/
+# 서버 모드 쿠키 서명 키 — 저장 폴더를 저장소로 둘 때 (docs/08-tech.md 11-2)
+.camp-secret

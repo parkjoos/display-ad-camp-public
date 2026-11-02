@@ -1,0 +1,117 @@
+/* 진행자 화면 (docs/12-host-view.md 4장) — 노트북 화면용. 버튼 높이 56px 이상 */
+body.host-page { overflow: auto; font-size: 16px; }
+#host { max-width: 1280px; margin: 0 auto; padding: 14px 18px 40px; display: flex; flex-direction: column; gap: 12px; }
+.h-login { min-height: 90vh; display: flex; align-items: center; justify-content: center; }
+.h-login .panel { width: min(460px, 92vw); text-align: center; }
+.h-login input { font-size: 34px; letter-spacing: 0.4em; text-align: center; width: 100%; }
+.h-head { display: flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 700; flex-wrap: wrap; }
+.h-head .title { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.h-status { font-size: 14px; color: var(--ok); }
+.h-status.off { color: #fca5a5; }
+.h-banner { background: rgba(239,68,68,0.15); color: #fecaca; border-radius: 10px; padding: 10px 14px; font-weight: 700; }
+.h-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.h-card h3 { margin: 0; font-size: 15px; color: var(--text-dim); font-weight: 700; }
+.h-q { display: grid; grid-template-columns: 200px 1fr; gap: 16px; align-items: start; }
+.h-thumb { width: 200px; height: 150px; border-radius: 10px; background: var(--surface-2); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 46px; }
+.h-thumb img { width: 100%; height: 100%; object-fit: contain; }
+.h-answer { font-size: 48px; font-weight: 900; color: var(--accent); line-height: 1.15; word-break: keep-all; }
+.h-meta { font-size: 16px; color: var(--text-soft); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.h-meta b { color: var(--text-dim); font-weight: 700; margin-right: 6px; }
+.h-prompt { font-size: 18px; font-weight: 700; }
+.h-badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 13px; font-weight: 700; background: var(--surface-2); color: var(--text-dim); }
+.h-badge.on { background: rgba(255,138,61,0.15); color: var(--accent); }
+.h-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.h-row .label { width: 82px; color: var(--text-dim); font-weight: 700; font-size: 14px; }
+.hb { min-height: 56px; padding: 0 22px; font-size: 18px; border-radius: 12px; }
+.hb.big { min-height: 64px; font-size: 21px; padding: 0 30px; }
+.hb.team { border: 3px solid var(--c); background: color-mix(in srgb, var(--c) 18%, var(--surface-2)); }
+.hb.team.on { background: var(--c); color: var(--accent-ink); }
+.hb.end { border-color: var(--danger); }
+.h-list { display: flex; flex-direction: column; gap: 4px; font-size: 16px; }
+.h-list .it { display: flex; gap: 10px; align-items: center; padding: 4px 8px; border-radius: 8px; }
+.h-list .it.cur { background: var(--surface-2); }
+.h-list .it.past { opacity: 0.5; }
+.h-list .n { width: 28px; color: var(--text-dim); font-weight: 700; }
+.h-list .h-next { margin-left: auto; } /* 다음 문제 지정 (R-35) */
+.h-list button.h-next { min-height: 36px; padding: 0 14px; font-size: 14px; }
+/* 라운드에 안 뽑힌 후보 (R-52) — 이번 라운드 목록 아래, 흐린 제목으로 구분 */
+.h-cand { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--surface-2); }
+.h-cand-head { color: var(--text-dim); font-size: 13px; margin-bottom: 6px; }
+.h-list .it.cand { color: var(--text-dim); }
+.h-cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
+.h-cat { display: flex; align-items: center; gap: 8px; min-height: 52px; padding: 6px 12px; border-radius: 10px; border: 2px solid var(--line); background: var(--surface-2); cursor: pointer; font-size: 16px; font-weight: 700; text-align: left; color: var(--text); }
+.h-cat.on { border-color: var(--ok); }
+.h-cat.off { opacity: 0.55; }
+.h-cat:disabled { opacity: 0.3; cursor: not-allowed; }
+.h-cat .meta { margin-left: auto; font-size: 13px; color: var(--text-dim); font-weight: 500; }
+/* 룰렛 결과 지정 (R-48) — 고른 것 하나만 강조. 버튼이 여러 줄이면 라벨은 첫 줄에 */
+.h-pick-row { align-items: flex-start; }
+.h-pick-row .label { padding-top: 12px; }
+.h-picks { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; min-width: 0; }
+.h-pick { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 4px 14px; border-radius: 10px; border: 2px solid var(--line); background: var(--surface-2); color: var(--text); font-size: 16px; font-weight: 700; cursor: pointer; }
+.h-pick.on { border-color: var(--accent); background: rgba(255,138,61,0.15); color: var(--accent); }
+.h-pick:disabled { opacity: 0.3; cursor: not-allowed; }
+.h-scores { display: flex; gap: 18px; flex-wrap: wrap; font-size: 18px; font-weight: 700; }
+.h-scores .num { font-size: 26px; font-weight: 900; margin-left: 6px; }
+.h-big { font-size: 34px; font-weight: 900; }
+.h-table { border-collapse: collapse; font-size: 15px; }
+.h-table th, .h-table td { padding: 6px 12px; border-bottom: 1px solid var(--line); text-align: center; word-break: keep-all; overflow-wrap: anywhere; } /* 창이 좁을 때 어절 단위로 줄바꿈 (K-10) */
+.h-table th:first-child, .h-table td:first-child { text-align: left; }
+.h-table select, .h-table input { background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 4px; font-size: 15px; width: 6em; }
+/* 줄줄이 말해요 문제 · 정답 후보 (R-44) — 후보는 팀원이 말하는 동안 빨리 훑어보게 크게 */
+.h-chain-q { font-size: 56px; font-weight: 900; line-height: 1.1; word-break: keep-all; overflow-wrap: anywhere; }
+.h-answers { display: flex; flex-wrap: wrap; gap: 8px; }
+.h-answers .chip { font-size: 22px; font-weight: 700; color: var(--accent); background: var(--surface-2); padding: 6px 14px; }
+/* 정답 기록 고치기 (R-60) — 문제마다 한 줄, 팀 버튼은 팀 색 */
+.h-record { border-color: var(--accent); }
+.h-rec-round { display: flex; flex-direction: column; gap: 4px; }
+.h-rec-head { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; font-weight: 800; color: var(--accent); }
+.h-rec-head .meta { margin-left: auto; font-size: 13px; color: var(--text-dim); font-weight: 600; }
+.h-rec-q { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 4px 0; border-top: 1px solid var(--line); }
+.h-rec-q .n { color: var(--text-dim); font-weight: 700; font-size: 14px; }
+.h-rec-ans { font-weight: 700; word-break: keep-all; overflow-wrap: anywhere; }
+.h-rec-live { color: var(--accent); font-size: 14px; font-weight: 700; }
+.h-rec-btns { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.h-rec-btns .btn { min-height: 38px; }
+.h-rec-team { border: 2px solid var(--c); background: color-mix(in srgb, var(--c) 15%, var(--surface-2)); }
+.h-rec-team.on { background: var(--c); color: var(--accent-ink); }
+/* 라운드 종료 안내 (R-56) — 맞힌 팀 바로 아래, 눈에 띄게 */
+.h-round-end { border: 2px solid var(--accent); background: color-mix(in srgb, var(--accent) 7%, var(--surface)); }
+.h-round-end h2 { margin: 0; font-size: 24px; color: var(--accent); }
+/* 대표 교체 안내 (R-64) — 참고용, 맞힌 팀 구역 안 */
+.h-swap { font-size: 18px; font-weight: 700; color: var(--accent); }
+/* 맞힌 사람 (R-94) — 팀마다 한 줄: 팀 이름 + 대표 버튼 */
+.h-reps { display: flex; flex-direction: column; gap: 8px; }
+.h-rep-team { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-left: 10px; border-left: 6px solid var(--c); }
+.h-rep-name { min-width: 5em; font-size: 17px; font-weight: 700; }
+.h-rep-team .hb.rep { flex: 1 1 0; min-width: 8em; font-variant-numeric: tabular-nums; }
+.h-rec-reps { display: inline-flex; align-items: center; gap: 4px; padding-left: 6px; border-left: 4px solid var(--c); font-size: 14px; }
+.blurred .secret { filter: blur(14px); }
+.h-empty { padding: 40px; text-align: center; color: var(--text-dim); font-size: 20px; }
+
+/* 휴대폰 — 서버 모드에서 진행자가 휴대폰으로 연다 (12-host-view 2-2, R-36). 한 열로 쌓고 버튼은 줄을 채운다 */
+@media (max-width: 759px) {
+  #host { padding: 10px 10px 32px; gap: 10px; }
+  .h-head { font-size: 16px; gap: 8px; }
+  .h-card { padding: 12px; overflow-x: auto; }
+  .h-rec-q { grid-template-columns: 28px minmax(0, 1fr); } /* 정답 기록 — 팀 버튼은 다음 줄로 (R-60) */
+  .h-rec-btns, .h-rec-live { grid-column: 1 / -1; justify-content: flex-start; }
+  .h-q { grid-template-columns: 1fr; gap: 10px; }
+  .h-thumb { width: 100%; height: 160px; }
+  .h-answer { overflow-wrap: anywhere; }
+  .h-chain-q { font-size: 44px; }
+  .h-answers .chip { font-size: 19px; }
+  .h-row .label { width: 100%; }
+  .h-pick-row .label { padding-top: 0; }
+  .h-row .hb { flex: 1 1 auto; padding: 0 14px; font-size: 17px; }
+  .hb.big { padding: 0 18px; font-size: 19px; }
+  .h-cats { grid-template-columns: 1fr; }
+  .h-list .it { flex-wrap: wrap; }
+  .h-scores { gap: 8px 14px; font-size: 16px; }
+  .h-table { font-size: 14px; }
+  .h-table th, .h-table td { padding: 6px; }
+  .h-table th:first-child, .h-table td:first-child { min-width: 6em; overflow-wrap: break-word; } /* 라운드 이름이 한 글자씩 꺾이지 않게 */
+  .h-table select, .h-table input { width: 4.4em; }
+  .dialog { padding: 18px 16px; }
+  .dialog-actions .hb { flex: 1 1 auto; }
+}

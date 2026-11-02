@@ -1,0 +1,39 @@
+/* 공개 모드 /play (R-96 · R-98, docs/05-screens.md 7장) — 게임 화면 스타일(style.css) 위에 다른 점만 */
+
+/* 버튼 오른쪽 키 이름 */
+.pp-btn kbd { font: inherit; font-size: 0.68em; font-weight: 700; padding: 0.05em 0.45em; border: 1px solid currentColor; border-radius: 0.35em; opacity: 0.65; }
+.pp-keys { font-size: max(13px, 2vh); color: var(--text-dim); }
+.pp-badge { font-size: max(12px, 1.9vh); font-weight: 700; padding: 0.2em 0.8em; border-radius: 1em; background: rgba(255, 138, 61, 0.15); color: var(--accent); white-space: nowrap; }
+.pp-badge.ok { background: rgba(147, 176, 137, 0.16); color: var(--ok); }
+
+/* 게임 목록 — 제목 화면 배경 위에 게임 카드. 넘치면(휴대폰) 위가 잘리지 않게 가운데 정렬 대신 위아래 auto 여백 */
+.pp-home { padding: 4vh var(--side); overflow-y: auto; justify-content: flex-start; }
+.pp-home > :first-child { margin-top: auto; }
+.pp-home > :last-child { margin-bottom: auto; }
+.pp-title { font-size: max(32px, 8vh); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; }
+.pp-sub { font-size: max(16px, 2.8vh); color: var(--text-soft); }
+.pp-card { min-width: min(80vw, 22vw); max-width: 40vh; }
+.pp-card.focus { border-color: var(--accent); }
+.pp-card .pc-name { font-size: max(22px, 4.4vh); }
+.pp-card .pc-desc { font-size: max(14px, 2.2vh); color: var(--text-soft); }
+.pp-home > .pp-btn { font-size: max(14px, 2.2vh); } /* 이어하기 초기화 (R-103) */
+
+/* 카테고리 목록 — 게임 홈과 같은 머리 · 카테고리 카드, ☰ 자리가 없어 왼쪽 여백을 줄인다 (R-98) */
+.pp-game { padding-left: var(--side); }
+.pp-game .home-rules { font-size: max(15px, 2.4vh); color: var(--text-soft); }
+.pp-cats { flex: 0 1 auto; }
+.pp-cat { font-size: max(16px, 3vh); }
+.pp-cat.focus { border-color: var(--accent); }
+.pp-cat.done .cc-name { color: var(--text-soft); }
+.pp-cat .cc-meta { gap: 0.6em; flex-wrap: wrap; }
+@media (max-width: 900px) { .pp-cats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* 진행 — 아래 띠는 점수 대신 버튼 */
+.pp-play { grid-template-rows: 8vh minmax(0, 1fr) auto; }
+.pp-play .play-head { padding-left: var(--side); }
+.pp-bar { display: flex; align-items: center; gap: 1vw; padding: 1.4vh var(--side); background: var(--surface); border-top: 1px solid var(--line); flex-wrap: wrap; }
+.pp-bar .btn { font-size: max(16px, 2.4vh); }
+.pp-gap { flex: 1; }
+
+.pp-end .start-btns { margin-top: 2vh; }
+.pp-end .btn { font-size: max(18px, 2.8vh); }

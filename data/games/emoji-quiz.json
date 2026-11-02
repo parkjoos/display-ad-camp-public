@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "emoji-quiz",
+  "type": "emoji",
+  "title": "이모티콘 퀴즈",
+  "icon": "😀",
+  "description": "이모지를 보고 영화 · 속담 · 노래 제목을 맞혀 보세요!",
+  "order": 2,
+  "rules": ["모두 참여 — 먼저 맞힌 사람의 팀이 정답 1개", "정답 1개마다 팀 점수 (배점)"],
+  "categories": [
+    {
+      "id": "movie",
+      "name": "영화",
+      "icon": "🎬",
+      "description": "이모지로 표현한 영화 제목은?",
+      "prompt": "이 영화의 제목은?",
+      "questions": [
+        {
+          "id": "movie-tgny",
+          "answer": "기생충",
+          "emojis": "🪱🏠💰",
+          "reveal": "sequential",
+          "hint": "봉준호",
+          "note": "검수용 샘플 (DATA-4)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "movie-npha",
+          "answer": "라이온 킹",
+          "emojis": "🦁👑 🌍🌅 🐗🐒 🎵🎶 🌲🌳 🐘🦒",
+          "note": "검수용 샘플 (DATA-4)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "movie-7xkz",
+          "answer": "이미지 문제 (E-15)",
+          "image": "assets/emoji-quiz/movie/movie-7xkz.png",
+          "note": "검수용 샘플 (DATA-4)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "movie-5ka9",
+          "answer": "타이타닉",
+          "emojis": "🚢🧊💔",
+          "note": "검수용 샘플 (DATA-4)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "proverb",
+      "name": "속담",
+      "icon": "📜",
+      "description": "이모지로 표현한 속담 · 사자성어는?",
+      "prompt": "이 속담은?",
+      "questions": [
+        {
+          "id": "proverb-ax6x",
+          "answer": "일석이조",
+          "emojis": "🐦🐦🪨",
+          "note": "검수용 샘플 (DATA-4) — 사자성어도 인정",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "proverb-ahz2",
+          "answer": "그림의 떡",
+          "emojis": "🖼️🍡",
+          "reveal": "sequential",
+          "note": "검수용 샘플 (DATA-4)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "proverb-rqqu",
+          "answer": "소 잃고 외양간 고친다",
+          "emojis": "🐄💨 🏚️🔨",
+          "note": "검수용 샘플 (DATA-4)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "proverb-gdxx",
+          "answer": "고래 싸움에 새우 등 터진다",
+          "emojis": "🐳⚔️🐳 🦐💥",
+          "hint": "바다",
+          "note": "검수용 샘플 (DATA-4)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "song",
+      "name": "노래 제목",
+      "icon": "🎵",
+      "description": "이모지로 표현한 노래 제목은?",
+      "prompt": "이 노래의 제목은?",
+      "questions": [
+        {
+          "id": "song-px6m",
+          "answer": "가을 편지",
+          "emojis": "🍂💌",
+          "note": "검수용 샘플 (DATA-4)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "song-3sta",
+          "answer": "벚꽃 엔딩",
+          "emojis": "🌸🔚",
+          "reveal": "sequential",
+          "note": "검수용 샘플 (DATA-4)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "song-jh6g",
+          "answer": "밤양갱",
+          "emojis": "🌰🍫",
+          "note": "검수용 샘플 (DATA-4)",
+          "addedAt": "2026-10-06"
+        },
+        {
+          "id": "song-kp9k",
+          "answer": "좋은 날",
+          "emojis": "👍☀️📅",
+          "hint": "아이유",
+          "note": "검수용 샘플 (DATA-4)",
+          "addedAt": "2026-10-06"
+        }
+      ]
+    }
+  ]
+}

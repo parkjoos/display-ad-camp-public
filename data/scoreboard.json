@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "rounds": [
+    {
+      "id": "team-forming",
+      "name": "팀 정하기",
+      "kind": "rank",
+      "points": [50, 0, 0, 0]
+    },
+    {
+      "id": "ten-seconds",
+      "name": "10초 안에 성공하라",
+      "kind": "rank",
+      "points": [200, 100, 50, 0]
+    },
+    {
+      "id": "chain-talk",
+      "name": "줄줄이 말해요",
+      "kind": "pass",
+      "pass": 200,
+      "fail": 0,
+      "gameId": "chain-talk"
+    },
+    {
+      "id": "emoji-quiz",
+      "name": "이모티콘 퀴즈",
+      "kind": "count",
+      "per": 50,
+      "gameId": "emoji-quiz"
+    },
+    {
+      "id": "photo-quiz",
+      "name": "사진 보고 맞추기",
+      "kind": "rank",
+      "points": [100, 50, 0, 0],
+      "gameId": "photo-quiz"
+    },
+    {
+      "id": "jegi",
+      "name": "제기차기",
+      "kind": "rank",
+      "points": [300, 200, 100, 0]
+    },
+    {
+      "id": "shoe-throw",
+      "name": "신발 던지기",
+      "kind": "rank",
+      "points": [600, 400, 200, 0]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+/* 관리 페이지 (docs/04-admin.md) — 노트북용 일반 웹 페이지 */
+body.admin-page { overflow: auto; font-size: 15px; }
+#admin { max-width: 1240px; margin: 0 auto; padding: 0 18px 60px; }
+.a-top { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 12px 0; background: var(--bg); border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+.a-top .crumbs { flex: 1; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; font-weight: 700; }
+.a-top .crumbs button { background: none; border: 0; color: var(--text-dim); cursor: pointer; font-size: 15px; font-weight: 700; padding: 0; }
+.a-top .crumbs button:hover { color: var(--text); }
+.a-status { font-size: 13px; color: var(--ok); }
+.a-status.off { color: #fca5a5; font-weight: 700; }
+/* 서버가 꺼지면 읽기 전용 — 저장 · 추가 · 삭제 · 초기화 버튼을 막는다 (I-2) */
+body.a-offline #admin .btn.primary, body.a-offline #admin .btn.danger, body.a-offline #admin .a-foot .btn, body.a-offline #admin .order-btns button { opacity: 0.4; pointer-events: none; }
+.a-pin { min-height: 90vh; display: flex; align-items: center; justify-content: center; }
+.a-pin .panel { width: min(460px, 92vw); text-align: center; }
+.a-pin input { font-size: 34px; letter-spacing: 0.4em; text-align: center; width: 100%; }
+.a-section { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; display: flex; flex-direction: column; gap: 10px; }
+.a-section h2 { margin: 0; font-size: 18px; }
+.a-section h3 { margin: 0; font-size: 15px; color: var(--text-dim); }
+/* ⌘V 로 붙여넣을 칸 (R-34) */
+.a-section.paste-target { border-color: rgba(255, 138, 61, 0.55); }
+.a-section.paste-target > h2::after, .a-section.paste-target > h3::after { content: '⌘V 붙여넣기'; margin-left: 8px; padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 700; color: var(--accent); background: rgba(255, 138, 61, 0.12); vertical-align: 2px; }
+.a-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.a-card { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 6px; cursor: pointer; text-align: left; color: var(--text); font-size: 15px; }
+.a-card:hover { border-color: var(--text-dim); }
+.a-card .t { font-size: 18px; font-weight: 900; display: flex; gap: 8px; align-items: center; }
+.a-card .m { color: var(--text-dim); font-size: 13px; }
+.ok-badge { color: var(--ok); font-weight: 700; }
+.warn-badge { color: var(--accent); font-weight: 700; }
+.err-badge { color: #fca5a5; font-weight: 700; }
+.a-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.a-form { display: grid; grid-template-columns: 150px 1fr; gap: 10px 14px; align-items: center; }
+.a-form label { color: var(--text-dim); font-weight: 700; }
+.a-form .hint { grid-column: 2; color: var(--text-dim); font-size: 13px; margin-top: -6px; }
+.a-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.a-table th, .a-table td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+.a-table th { color: var(--text-dim); font-weight: 700; }
+.a-table tr.hidden td { opacity: 0.5; }
+.a-thumb { width: 64px; height: 48px; border-radius: 6px; background: var(--surface-2); object-fit: cover; display: block; }
+.a-msg { padding: 10px 12px; border-radius: 8px; font-weight: 700; }
+.a-msg.warn { background: rgba(255,138,61,0.12); color: var(--accent); }
+.a-msg.err { background: rgba(239,68,68,0.14); color: #fecaca; }
+.a-msg.ok { background: rgba(147,176,137,0.14); color: var(--ok); }
+.a-msg.info { background: var(--surface-2); color: var(--text-soft); font-weight: 500; }
+textarea.input { width: 100%; min-height: 180px; font-family: ui-monospace, Menlo, monospace; font-size: 13px; }
+.emoji-pick { display: flex; flex-wrap: wrap; gap: 4px; }
+.emoji-pick button { width: 36px; height: 36px; font-size: 20px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface-2); cursor: pointer; font-family: var(--emoji); }
+.emoji-pick button.on { border-color: var(--accent); }
+
+/* 사진 문제 편집 (3-6) */
+.q-edit { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(320px, 1fr); gap: 16px; align-items: start; }
+.img-box { position: relative; background: #0b0d10; border: 2px dashed var(--line); border-radius: 10px; min-height: 320px; padding: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; user-select: none; }
+.img-box.drag { border-color: var(--accent); background: rgba(255,138,61,0.06); }
+.img-box.bulk-drop { min-height: 140px; }
+.img-stage { position: relative; display: inline-block; line-height: 0; touch-action: none; }
+.img-stage.drawable { cursor: crosshair; }
+.img-stage img { display: block; max-width: none; max-height: none; -webkit-user-drag: none; }
+.img-layer { position: absolute; inset: 0; }
+/* 확대: 처음 화면에 보이는 범위 밖을 어둡게 */
+.img-stage[data-effect=zoom] { overflow: hidden; }
+.img-stage[data-effect=zoom] .zoom-view { box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.45); }
+.img-stage .mbox { line-height: 1; }
+.img-stage .focus { position: absolute; width: 28px; height: 28px; margin: -14px 0 0 -14px; border: 3px solid var(--accent); border-radius: 50%; box-shadow: 0 0 0 3px rgba(0,0,0,0.5); pointer-events: none; }
+.img-stage .focus::before, .img-stage .focus::after { content: ''; position: absolute; background: var(--accent); }
+.img-stage .focus::before { left: 50%; top: -12px; bottom: -12px; width: 2px; margin-left: -1px; }
+.img-stage .focus::after { top: 50%; left: -12px; right: -12px; height: 2px; margin-top: -1px; }
+.img-stage .mbox { position: absolute; background: rgba(244,236,221,0.85); border: 3px solid #CFC6B6; color: #6E8A69; font-weight: 900; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: move; }
+.img-stage .mbox.sel { border-color: var(--accent); }
+.img-stage .mbox .handle { position: absolute; right: -7px; bottom: -7px; width: 14px; height: 14px; background: var(--accent); border-radius: 3px; cursor: nwse-resize; }
+.img-stage .zoom-view { position: absolute; border: 2px dashed var(--accent); pointer-events: none; }
+.img-empty { color: var(--text-dim); text-align: center; padding: 30px; line-height: 1.8; }
+/* 미리보기 — 실제 문제 화면 가운데 영역(16:6.84)을 실제 크기로 그린 뒤 줄여 보임 */
+.preview-box { position: relative; width: 100%; aspect-ratio: 16 / 6.84; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.pv-inner { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.pv-inner .play-main { position: absolute; inset: 0; }
+/* 줄줄이 말해요 문제 미리보기 (R-44) — 주제 카드 화면 전체(16:9). 글자 폭은 관리 창이 아니라 16:9 화면 기준(88vw = 156vh) */
+.preview-box.full { aspect-ratio: 16 / 9; }
+/* 사진 문제 미리보기 (R-53) — 점수가 오른쪽 열이라 가운데 영역이 (16/9 − 0.16) : 0.92 = 14.56 : 8.28 */
+.preview-box.side { aspect-ratio: 14.56 / 8.28; }
+.pv-inner .pv-screen { position: absolute; inset: 0; display: flex; flex-direction: column; }
+.pv-inner .tq-prompt { font-size: max(7vh, min(22vh, calc(156vh / var(--n)))); animation: none; }
+.answer-chips { margin-top: 8px; gap: 6px; }
+.answer-chips .chip { font-size: 15px; font-weight: 700; }
+.answer-chips .chip .link { font-size: 13px; text-decoration: none; }
+.mask-list { display: flex; flex-direction: column; gap: 4px; }
+.mask-list .it { display: flex; gap: 6px; align-items: center; padding: 4px 6px; border-radius: 6px; cursor: pointer; }
+.mask-list .it.sel { background: var(--surface-2); outline: 1px solid var(--accent); }
+.effect-panel { display: flex; flex-direction: column; gap: 8px; padding: 10px 12px; background: var(--surface-2); border-radius: 8px; }
+.radio-row label, .a-form .radio-row label { color: var(--text); font-weight: 600; cursor: pointer; display: inline-flex; gap: 4px; align-items: center; margin-right: 10px; }
+.a-form .hint.warn-accent, .hint.warn-accent { font-size: 13px; }
+.a-foot { justify-content: flex-end; position: sticky; bottom: 0; z-index: 10; background: var(--bg); padding: 12px 0; border-top: 1px solid var(--line); margin-top: 6px; }
+/* 정답 영상 구간 미리보기 (R-61) — 게임 화면과 같은 플레이어(.clip-layer)를 16:9 칸에 */
+.clip-preview { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #000; }
+.clip-preview[hidden] { display: none; }
+.clip-preview .clip-note { font-size: 13px; padding: 6px 10px; }
+.a-thumb.big { width: 120px; height: 90px; object-fit: contain; background: #0b0d10; }
+.a-thumbwrap { position: relative; display: inline-block; line-height: 0; }
+.a-thumbwrap img { max-width: 64px; max-height: 48px; display: block; border-radius: 4px; }
+.a-thumbwrap .dot { position: absolute; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 1.5px #000; }
+.a-thumbwrap .mb { position: absolute; border: 1.5px solid var(--accent); background: rgba(244,236,221,0.35); }
+/* 안 쓰는 이미지 정리 (R-68) — 한 장씩 크게 */
+.a-imgclean-view { display: flex; justify-content: center; align-items: center; height: 56vh; background: #0b0d10; border-radius: 8px; overflow: hidden; }
+.a-imgclean-view img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.a-table tr.a-imgclean-on td { background: var(--surface-2); font-weight: 700; }
+.emoji-input { font-family: var(--emoji); font-size: 30px; letter-spacing: 0.08em; }
+.emoji-palette { max-height: 260px; overflow: auto; padding: 8px; background: var(--surface-2); border-radius: 8px; }
+.emoji-palette .grp { color: var(--text-dim); font-size: 12px; font-weight: 700; margin: 6px 0 4px; }
+.emoji-palette .grp:first-child { margin-top: 0; }
+.bulk-table .input { width: 100%; min-width: 140px; }
+input[type=range] { width: 200px; }
+.small-note { color: var(--text-dim); font-size: 13px; }
+.paste-table td.st { font-weight: 900; }
+.reset-grid { display: grid; grid-template-columns: auto 1fr 1.4fr; gap: 6px 14px; align-items: center; }

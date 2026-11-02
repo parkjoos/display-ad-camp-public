@@ -1,0 +1,10 @@
+# Vercel 로 올리지 않는 것 (R-51 · DEP-15, docs/16-deploy.md) — 공개 파일은 public/ 뿐이고, 함수에는 vercel.json includeFiles 만 들어간다
+# 여기는 그 전에 업로드 자체를 막는 목록: 로컬 설정(테스트용 PIN) · 현장 상태 · 백업 · 서명 키
+.claude/
+.idea/
+candidates/
+state/
+data/.backup/
+.camp-secret
+*.tmp
+.DS_Store

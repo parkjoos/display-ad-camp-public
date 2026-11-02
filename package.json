@@ -1,0 +1,20 @@
+{
+  "name": "display-ad-camp-game",
+  "version": "0.1.0",
+  "private": true,
+  "description": "2026 디광 캠핑 진행용 로컬 게임 앱",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.mjs --open",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@vercel/blob": "2.8.1"
+  },
+  "overrides": {
+    "zod": "4.6.6"
+  }
+}

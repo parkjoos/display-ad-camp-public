@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm test",
+  "outputDirectory": "public",
+  "regions": ["icn1"],
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 300,
+      "includeFiles": "{index.html,host.html,admin.html,play.html,app/**,docs/manual.md,docs/templates/**,data/*.json,data/games/*.json,assets/**}"
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/index" }
+  ]
+}
